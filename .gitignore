@@ -26,6 +26,11 @@ expo-env.d.ts
 *.swp
 *.swo
 
+# AI & Assistant configs
+AGENTS.md
+.claude/
+CLAUDE.md
+
 # Metro
 .metro-health-check*
 
