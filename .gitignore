@@ -9,7 +9,9 @@ dist/
 web-build/
 expo-env.d.ts
 
-# Native
+# Native & Binaries
+*.apk
+*.aab
 .kotlin/
 *.orig.*
 *.jks
@@ -17,6 +19,12 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+
+# IDE & Editor
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # Metro
 .metro-health-check*
