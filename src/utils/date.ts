@@ -11,6 +11,14 @@ export function formatISODate(date: Date = new Date()): string {
 }
 
 /**
+ * ISO veya SQLite datetime dizgisinden ('YYYY-MM-DDTHH:MM:SS' ya da 'YYYY-MM-DD HH:MM:SS')
+ * sadece 'YYYY-MM-DD' tarih kısmını çıkarır.
+ */
+export function toDateOnly(dateTimeStr: string): string {
+  return dateTimeStr.split(/[T ]/)[0];
+}
+
+/**
  * 'YYYY-MM-DD' dizgisinden yerel Date nesnesi üretir.
  */
 export function parseISODate(dateStr: string): Date {

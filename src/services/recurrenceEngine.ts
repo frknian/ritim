@@ -1,5 +1,5 @@
 import { Habit, FrequencyType, FrequencyConfig } from '../types';
-import { parseISODate, getDayDifference } from '../utils/date';
+import { parseISODate, getDayDifference, toDateOnly } from '../utils/date';
 
 export const RecurrenceEngine = {
   /**
@@ -31,7 +31,7 @@ export const RecurrenceEngine = {
         if (interval <= 1) return true;
 
         // Alışkanlığın oluşturulma tarihinden bu yana geçen gün farkı
-        const createdDateStr = habit.createdAt.split('T')[0];
+        const createdDateStr = toDateOnly(habit.createdAt);
         const diffDays = getDayDifference(createdDateStr, dateStr);
         return diffDays % interval === 0;
       }

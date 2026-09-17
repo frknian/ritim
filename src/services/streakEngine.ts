@@ -1,5 +1,5 @@
 import { getDatabase } from '../db/client';
-import { formatISODate, parseISODate, addDays } from '../utils/date';
+import { formatISODate, parseISODate, addDays, toDateOnly } from '../utils/date';
 import { RecurrenceEngine } from './recurrenceEngine';
 import { Habit } from '../types';
 
@@ -88,7 +88,7 @@ export const StreakEngine = {
 
     // Geriye doğru tara (en fazla 365 gün)
     let iterDate = checkDateStr;
-    const createdDateStr = habit.createdAt.split('T')[0];
+    const createdDateStr = toDateOnly(habit.createdAt);
 
     for (let i = 0; i < 365; i++) {
       if (iterDate < createdDateStr) break;
@@ -165,7 +165,7 @@ export const StreakEngine = {
     );
 
     const todayStr = formatISODate();
-    const startDateStr = lastRelapse ? lastRelapse.entry_date : habit.createdAt.split('T')[0];
+    const startDateStr = lastRelapse ? lastRelapse.entry_date : toDateOnly(habit.createdAt);
 
     const d1 = parseISODate(startDateStr).getTime();
     const d2 = parseISODate(todayStr).getTime();
@@ -180,7 +180,7 @@ export const StreakEngine = {
     );
 
     let longest = cleanDays;
-    let prev = habit.createdAt.split('T')[0];
+    let prev = toDateOnly(habit.createdAt);
 
     for (const r of allRelapses) {
       const diff = Math.max(
